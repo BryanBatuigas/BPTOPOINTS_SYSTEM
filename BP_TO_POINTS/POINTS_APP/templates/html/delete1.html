@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% block content %}    
+<head>
+	<title>Delete</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+            background-size: cover;
+            background-attachment: fixed;
+			background: linear-gradient(
+                    to right,
+                    rgb(31, 134, 31) 0%,
+                    #E4EFE7 50%,
+                    #E4EFE7 50%,
+                    #d6e6da 100%
+                );
+		}
+		.user_card {
+			margin: 0;
+			background: yellow;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-right: 25%;
+			transform: translate(-50%, -50%);
+			width: 1000px;
+            height: 500px;
+			/* margin-top: auto;
+			margin-bottom: 300px; */
+			display: absolute;
+			background: #eaedf0;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+			text-align: center;
+
+		}
+
+		.form_container {
+			margin-top: 40px;
+		}
+
+		#form-title{
+			color: black;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		}
+
+		/* button */
+		#button1{
+			width: 180px;
+			height: 50px;
+			border-radius: 5%;
+			font-size: 15px;
+			font-weight: bold;
+			background-color: rgb(56, 150, 212);
+			cursor: pointer;
+			transition: 0.5s;
+			display: inline-block;
+			border-radius: 10px;
+			border: 4px double #cccccc;
+			color: #eeeeee;
+			text-align: center;
+			transition: all 0.5s;
+			cursor: pointer;
+			margin: 5px;
+		}
+		#button1:hover {
+			background-color: #4fc3f1;
+		}
+		#button2{
+			width: 180px;
+			height: 50px;
+			border-radius: 5%;
+			font-size: 15px;
+			font-weight: bold;
+			background-color: rgb(182, 84, 84);
+			cursor: pointer;
+			transition: 0.5s;
+			display: inline-block;
+			border-radius: 10px;
+			border: 4px double #cccccc;
+			color: #eeeeee;
+			text-align: center;
+			transition: all 0.5s;
+			cursor: pointer;
+			margin: 5px;
+		}
+		#button2:hover {
+			background-color: #e92e27;
+		}
+	</style>
+
+</head>
+<body id="bg"style="background-image:url('{% static 'Media/kamoterss.png'%}')">
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<h3 id="form-title">Are you sure you want to delete {{ideletus.user1}}'s {{ideletus.item1}}?</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					
+
+					<form action="{% url 'delete_1' ideletus.id %}" method="POST" >
+
+						{% csrf_token %}
+
+						<a href="{% url 'Admin_Rewards_History' %}" class="btn btn-warning" id="button1" style="align-items: center; text-align: center;">Cancel</a>
+
+						<input class="btn btn-danger" id="button2" type="submit" value="Delete" name="Confirm">
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}
+</html> 

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html lang="en" dir="ltr">
+    <head>
+        <title>Paper Exchange</title>
+        <meta charset="UTF-8">
+        <!-- Boxicons CDN Link -->
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+            *{
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
+                list-style: none;
+                box-sizing: none;
+            }
+            body{
+               height: 100vh;
+                background: linear-gradient(
+                    to right,
+                    rgb(31, 134, 31) 0%,
+                    #E4EFE7 50%,
+                    #E4EFE7 50%,
+                    #E4EFE7 100%
+                );
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .mainright{
+                
+                width: 50%;
+                text-align: center;
+                transition: all 0.5s ease;
+                justify-content: center;
+            }
+            
+           
+            .mainleft{
+               
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                transition: all 0.5s ease;
+                width: 50%;
+                
+            }
+            .right{
+                justify-content: center;
+                align-items: center;
+              
+                
+            }
+            /* Title */
+            .title{
+                font-size: 28px;
+                font-weight: 400;
+                margin-left: 50px;
+                width: 70%;
+                font-family: Arial, Helvetica, sans-serif;
+
+            }
+            .title1{
+                font-size: 25px;
+                font-weight: 400;
+                width: 80%;
+                line-height: 1.5;
+            }
+            #button1{
+                width: 30%;
+                height: 90px;
+                background-color: #064420;
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: bold;
+                color: white;
+                border-radius: 5%;
+                transition: 0.5s;
+                display: inline-block;
+                border-radius: 10px;
+                border: 4px double #cccccc;
+                color: #eeeeee;
+                text-align: center;
+                transition: all 0.5s;
+            }
+            #button1:hover{
+                background-color: #11a04d;
+            }
+        
+
+        </style>
+
+    </head>
+    <body>
+       
+        <div class="mainright">
+            <div class="leftside">
+                <img src="{% static 'Media/logo.png' %}">
+            </div>
+        </div>
+        <div class="mainleft">
+            <div class="leftside">
+                <img src="" alt="">
+            </div>
+            <div class="rightside">
+                <div class="right" >
+                    <div class="title">
+                        <div><H1 style="text-align:left;">Welcome to PWET bottle and paper to points Tupicians!</H1></div>
+                        <br>
+                       
+                        <div class="title1">
+                        
+                        <p style="text-align: justify;" > Become the best version of yourself by helping the Technological University of the philippines maintaining the cleanliness of the school while gaining points  </p>
+                        </div>
+                        <br><br><br><br>
+                        <div class="col-sm-11" ></div>
+                            <a href="{% url 'Kiosk_Login1' %}"><button style="float: right; margin-bottom: 10px; margin-right: 100px;" class="btn btn-primary col-sm-12"  type="submit" class="btn btn-primary col-sm-1" id="button1">S t a r t  !</button></a>
+                        <div class="col-sm-1"></div> 
+                    </div>
+                    
+                    
+            </div>
+        </div>
+        
+    </body>
+    <script>
+
+    </script>
+    {% endblock %}
+</html>

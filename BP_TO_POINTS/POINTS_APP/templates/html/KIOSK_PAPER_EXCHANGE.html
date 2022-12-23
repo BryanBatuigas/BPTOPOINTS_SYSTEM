@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <title>PAPER EXCHANGE</title>
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-section{
+  position: relative;
+  background: #f5f5f5;
+  min-height: 100vh;
+  width: 100%;
+  left: 50px;
+  align-items: center;
+  justify-content: center;
+
+  
+  
+}
+.sidebar.active ~ .home-section{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.home-section nav{
+  justify-content: space-between;
+  height: 120px;
+  background: rgb(65, 216, 45);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: calc(100% - 220px);
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+.home-section nav .sidebar-button{
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.home-section nav .profile-details{
+  display: flex;
+  align-items: center;
+  background: #F5F6FA;
+  border: 2px solid #EFEEF1;
+  border-radius: 6px;
+  height: 60px;
+  min-width: 250px;
+  padding: 0 15px 0 2px;
+}
+
+nav .profile-details .admin_name{
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 10px;
+  white-space: nowrap;
+}
+nav .profile-details i{
+  font-size: 35px;
+  color: #333;
+}
+.home-section .home-content{
+  position: relative;
+  padding-top: 104px;
+}
+
+
+/* left box */
+.home-content .sales-boxes .recent-sales{
+  width: 70%;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+.sales-boxes .box .title{
+  font-size: 24px;
+  font-weight: 500;
+  /* margin-bottom: 10px; */
+}
+/* button */
+#button1{
+      width: 30em;
+      height: 50vh;
+      border-radius: 5%;
+      font-size: 15px;
+      font-weight: bold;
+      background-color: #EDEDED;
+      cursor: pointer;
+      transition: 0.5s;
+      display: inline-block;
+      border-radius: 10px;
+      border: 4px double #cccccc;
+      color: #eeeeee;
+      text-align: center;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 15px;
+      justify-content: center;
+      align-items: center;
+      
+}
+#button1:hover {
+    background-color: #109749;
+}
+
+#button2{
+      width: 280px;
+      height: 100px;
+      border-radius: 5%;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #064420;
+      cursor: pointer;
+      transition: 0.5s;
+      display: inline-block;
+      border-radius: 10px;
+      border: 4px double #cccccc;
+      color: #eeeeee;
+      text-align: center;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+}
+#button2:hover {
+    background-color: #27e937;
+}
+
+/* Form */
+.inputField{
+      pointer-events: none;
+      width: 75%;
+      height: 50px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      font-size: 20px;
+}
+.form-control{
+      width: 75%;
+      height: 50px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      font-size: 20px;
+}
+
+.form-control1{
+  width: 75%;
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.classbutton{
+  height: auto;
+  
+}
+
+.classbutton:hover{
+    color: rgb(92, 193, 252);
+    font-weight: bold;
+    
+
+}
+
+.activebutton{
+  font-weight:bold ;
+  color: rgb(92, 193, 252);
+  text-shadow: black;
+  
+}
+
+.kioskbutton{
+    display: flex;
+}
+
+.mainright{
+                
+    width: 50%;
+    text-align: center;
+    transition: all 0.5s ease;
+    justify-content: center;
+}
+
+.mainleft{
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.5s ease;
+    width: 50%;
+    
+}
+.button1{
+    background-color: #140d7c;
+    width: 100000;
+}
+
+/* bago */
+/* .home-section nav{
+  justify-content: space-between;
+  height: 120px;
+  background: rgb(65, 216, 45);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: calc(100% - 220px);
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+} */
+
+.home-section .button2{
+  justify-content: space-between;
+  height: 120px;
+  background: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  width: calc(100% - 240px);
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+
+
+
+/* Responsive Media Query */
+@media (max-width: 1240px) {
+  .sidebar{
+    width: 60px;
+  }
+  .sidebar.active{
+    width: 220px;
+  }
+  .home-section{
+    width: calc(100% - 60px);
+    left: 60px;
+  }
+  .sidebar.active ~ .home-section{
+    /* width: calc(100% - 220px); */
+    overflow: hidden;
+    left: 220px;
+  }
+  .home-section nav{
+    width: calc(100% - 60px);
+    left: 60px;
+  }
+  .sidebar.active ~ .home-section nav{
+    width: calc(100% - 220px);
+    left: 220px;
+  }
+}
+@media (max-width: 1150px) {
+  
+  .home-content .sales-boxes .box{
+    width: 100%;
+    overflow-x: scroll;
+    margin-bottom: 30px;
+  }
+  .home-content .sales-boxes .top-sales{
+    margin: 0;
+  }
+}
+@media (max-width: 1000px) {
+  .overview-boxes .box{
+    width: calc(100% / 2 - 15px);
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 700px) {
+  nav .sidebar-button .dashboard,
+  nav .profile-details .admin_name,
+  nav .profile-details i{
+    display: none;
+  }
+  .home-section nav .profile-details{
+    height: 50px;
+    min-width: 40px;
+  }
+  .home-content .sales-boxes .sales-details{
+    width: 560px;
+  }
+}
+@media (max-width: 550px) {
+  .overview-boxes .box{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .sidebar.active ~ .home-section nav .profile-details{
+    display: none;
+  }
+}
+  @media (max-width: 400px) {
+  .home-section{
+    width: 100%;
+    left: 0;
+  }
+  .sidebar.active ~ .home-section{
+    left: 60px;
+    width: calc(100% - 60px);
+  }
+  .home-section nav{
+    width: 100%;
+    left: 0;
+  }
+  .sidebar.active ~ .home-section nav{
+    left: 60px;
+    width: calc(100% - 60px);
+  }
+}
+    </style>
+   </head>
+<body>
+  <section class="home-section">
+    <nav style=" margin-left: 50px;">
+      <div class="sidebar-button">
+        <img src="{% static 'Media/logo.png' %}" id="image1" style="height: 80px; width:80px; margin: 10px;" >
+        <span class="dashboard">PET BOTTLE AND PAPER TO POINTS SYSTEM</span>
+      </div>
+      
+      <div class="profile-details">
+        <!--<img src="images/profile.jpg" alt="">-->
+        <span class="admin_name">{{user}}</span>
+        <i class='bx bx-user-circle'></i>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <br><br><br>
+      <div class="sales-boxes" style=" align-items: center; width: 100%; padding: 0px 100px 0px 600px;">
+        <div class="recent-sales box">
+            <br>  
+            <div class="sales-details">
+                </ul>
+                    <div style="display: flex;">
+                        <div style="font-size: 70px; text-align: center; padding:100px 0px;  height: 500px; width: 1000px;" >
+                            <h1>PAPER WEIGHT</h1>
+                        </div> 
+                        <div style="font-size: 130px; text-align: center; padding:80px 0px;  height: 500px;">
+                          <h1>:</h1>
+                        </div>
+                        <div style="font-size: 120px; text-align: center; padding:100px 0px;  height: 500px; width: 1000px;">
+                          
+                          <h1>{{weight}}g</h1>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+          <br><br>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="recent-sales box">
+      <div class="button2" style=" margin-left: 50px;">
+        <div class="sidebar-button" style="display: flex;">
+          <h1 style="padding: 0px 10px; font-size: 60px;">TOTAL</h1>
+          <h1 style="padding: 0px 10px; font-size: 60px;">:</h1>
+          <h1 style="padding: 0px 10px; font-size: 60px;">{{points}} pts</h1>
+        </div>
+        <form method="POST">
+        {% csrf_token %}
+        <div class="profile-details">
+          <!--<img src="images/profile.jpg" alt="">-->
+          <a href="{% url 'Kiosk_papernote'%}"><button id="button2" name="button1">Another Transaction</button></a>
+          <a href="{% url 'Kiosk_Homescreen'%}"><button id="button2" name="button2">Proceed</button></a>
+        </div>
+      </form>
+      </div>
+    </div>
+  </section>
+
+
+
+ 
+
+</body>
+{% endblock %}
+</html>
+

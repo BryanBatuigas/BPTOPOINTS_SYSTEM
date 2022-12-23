@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <style>
+        *{
+        padding:0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing:border-box;
+        }
+        body{
+            font-family: montserrat;
+        }
+        nav{
+            background: #293332;
+            height:80px;
+            width:100%;
+        }
+        label.logo{
+            color: white;
+            font-size: 35px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+        nav ul{
+            float: right;
+            margin-right: 20px;
+        }
+        nav ul li{
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+        nav ul li a{
+            color: white;
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+        a.active,a:hover{
+            background: #1b9bff;
+            transition: .5s;
+
+        }
+        .checkbtn{
+            font-size: 30px;
+            color: #ccc;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check{
+            display: none;
+        }
+
+        @media (max-width: 952px){
+            label.logo{
+                font-size: 30px;
+                padding-left: 50px;
+            }
+            nav ul li a{ 
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 858px){
+            .checkbtn{
+                display:block;
+            }
+            ul{
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #2c3e50;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+                
+            }
+            nav ul li{
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+            nav ul li a{
+                font-size: 20px;
+
+            }
+            a:hover,a.active{
+                background: none;
+                color: #0082e6;
+
+            }
+            #check:checked ~ ul{
+                left: 0;
+            }
+
+
+            .container{ 
+                width: 80%;    
+                height: 100%;
+                background-color: #ccc;
+                margin-right: auto; 
+                display: block;
+                margin-left: auto;
+                margin-top: 7%;
+            
+            }
+
+            .card{
+                display:block;
+
+            }
+            h1{
+                display:block;
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+            img{
+                display:block;
+                height: 100px;
+                width: 50%;
+            }
+            
+
+
+        }
+
+        .container{
+            width: 80%;    
+            height: 400px;
+            background-color: antiquewhite;
+            margin-right: auto; 
+            display: block;
+            margin-left: auto;
+            margin-top: 5%; 
+            flex-wrap: wrap;
+            border-radius: 100px;
+            
+        }
+        .card{
+            display:block;
+            margin-left: 10px;
+
+        }
+            
+        h1{
+            text-align: center;
+            padding-top: 2%;
+            padding-left:10px;
+            
+        }
+        #pic{
+            
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            height:100px;
+            margin-left: 10%;
+            
+            
+        }
+
+        .card1{
+            text-align: center;
+            display:block;
+            margin-left:auto;
+
+            margin-right:auto;
+            margin-top:50px;
+            font-family:roboto;    
+        }
+
+        form{
+            margin-left: 50%;
+            
+        }
+        p{
+            text-align: center;
+            font-size: 22px;
+        }    
+        input{
+            border-radius: 4px;
+        }
+
+        </style>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Paper Exchange Page</title>
+
+</head>
+<body style= "background-color: #41807c;">
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">Paper Exchange</label>
+        <ul>
+            <li><a class="active" href="{% url 'userhomescreen' %}"> Home</a></li>
+            <li><a class="active" href="{% url 'about' %}"> About</a></li>
+            <li><a class="active" href="{% url 'Rewards' %}"> Rewards</a></li>
+            <li><a class="active" href='#'> Exchange</a></li>
+            <li><a class="active" href="{% url 'UserLogin' %}"> Log out</a></li>
+
+        </ul>
+    </nav>
+    
+    <div class="container">
+        
+        <div class="card1">
+            <h1> Exchange </h1>
+            <img src="{% static 'Media/favpng.png' %}" style="height:250px; float:left;">
+            
+            
+            <br>
+            <br>
+            <br>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form}}
+
+                <input type="submit" id="button1" value="Exchange" style="margin-left: 35px;">    
+            </form>
+            
+            
+            
+        
+            
+            
+        </div>
+        <div class="card">
+            <br><br><br>
+
+            <p>EXCHANGE RATE: 500G TO 1POINT/S</p>
+
+        </div>
+
+        
+
+        
+
+    </div>
+</body>
+{% endblock %}
+</html>

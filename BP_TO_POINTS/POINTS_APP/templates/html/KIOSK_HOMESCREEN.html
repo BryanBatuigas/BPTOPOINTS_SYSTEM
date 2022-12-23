@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <title>Kiosk Homescreen</title>
+    <meta charset="UTF-8">
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+.sidebar{
+  position: fixed;
+  height: 100%;
+  width: 220px;
+  background: #54B435;
+  transition: all 0.5s ease;
+}
+.sidebar.active{
+  width: 200px;
+}
+.sidebar .logo-details{
+  height: 120px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+  width: 500px;
+}
+.sidebar .logo-details i{
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  min-width: 500px;
+  text-align: center
+}
+.sidebar .logo-details .logo_name{
+  color: rgb(14, 13, 13);
+  font-size: 30px;
+  font-weight: 500;
+}
+.sidebar .nav-links{
+  margin-top: 10px;
+}
+.sidebar .nav-links li{
+  position: relative;
+  list-style: none;
+  height: 150px;
+}
+.sidebar .nav-links li a{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.sidebar .nav-links li a.active{
+  background: #285430;
+  border-radius: 100px 0 100px 0;
+}
+.sidebar .nav-links li a:hover{
+  background: #285430;
+  border-radius: 100px 0 100px 0;
+}
+.sidebar .nav-links li i{
+  min-width: 200px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+.sidebar .nav-links li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.sidebar .nav-links .log_out{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.home-section{
+  position: relative;
+  background: #f5f5f5;
+  min-height: 100vh;
+  width: calc(100% - 240px);
+  left: 290px;
+  transition: all 0.5s ease;
+  
+}
+.sidebar.active ~ .home-section{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.home-section nav{
+  display: flex;
+  justify-content: space-between;
+  height: 120px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: calc(100% - 240px);
+  left: 240px;
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+.sidebar.active ~ .home-section nav{
+  left: 60px;
+  width: calc(100% - 60px);
+}
+.home-section nav .sidebar-button{
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+nav .sidebar-button i{
+  font-size: 35px;
+  margin-right: 10px;
+}
+.home-section nav .search-box{
+  position: relative;
+  height: 50px;
+  max-width: 550px;
+  width: 100%;
+  margin: 0 20px;
+}
+nav .search-box input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  background: #F5F6FA;
+  border: 2px solid #EFEEF1;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 0 15px;
+}
+nav .search-box .bx-search{
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background: #2697FF;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  transition: all 0.4 ease;
+}
+.home-section nav .profile-details{
+  display: flex;
+  align-items: center;
+  background: #F5F6FA;
+  border: 2px solid #EFEEF1;
+  border-radius: 6px;
+  height: 60px;
+  min-width: 250px;
+  padding: 0 15px 0 2px;
+}
+nav .profile-details img{
+  height: 40px;
+  width: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+nav .profile-details .admin_name{
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 10px;
+  white-space: nowrap;
+}
+nav .profile-details i{
+  font-size: 35px;
+  color: #333;
+}
+.home-section .home-content{
+  position: relative;
+  padding-top: 104px;
+}
+.home-content .overview-boxes{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  margin-bottom: 26px;
+}
+.overview-boxes .box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 4 - 15px);
+  background: #fff;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.overview-boxes .box-topic{
+  font-size: 20px;
+  font-weight: 500;
+}
+.home-content .box .number{
+  display: inline-block;
+  font-size: 35px;
+  margin-top: -6px;
+  font-weight: 500;
+}
+.home-content .box .indicator{
+  display: flex;
+  align-items: center;
+}
+.home-content .box .indicator i{
+  height: 20px;
+  width: 20px;
+  background: #8FDACB;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+
+.home-content .total-order{
+  font-size: 20px;
+  font-weight: 500;
+}
+.home-content .sales-boxes{
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 20px; */
+}
+
+/* left box */
+.home-content .sales-boxes .recent-sales{
+  width: 50%;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.home-content .sales-boxes .sales-details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sales-boxes .box .title{
+  font-size: 24px;
+  font-weight: 500;
+  /* margin-bottom: 10px; */
+}
+.sales-boxes .sales-details li.topic{
+  font-size: 25px;
+  font-weight: 500;
+}
+.sales-boxes .sales-details li{
+  list-style: none;
+  margin: 8px 0;
+}
+.sales-boxes .sales-details li a{
+  font-size: 18px;
+  color: #333;
+  font-size: 400;
+  text-decoration: none;
+}
+.sales-boxes .box .button{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.sales-boxes .box .button a{
+  color: rgb(255, 255, 255);
+  background: #083b1c;
+  padding: 4px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.sales-boxes .box .button a:hover{
+  background:  #109749;
+}
+
+/* Right box */
+.home-content .sales-boxes .top-sales{
+  width: 50%;
+  background: #fff;
+  padding: 10px 60px;
+  margin: 0 140px 0 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.sales-boxes .top-sales li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.sales-boxes .top-sales li a img{
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 10px;
+  background: #333;
+}
+.sales-boxes .top-sales li a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.sales-boxes .top-sales li .product,
+.price{
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+}
+
+/* button */
+#button1{
+      width: 350px;
+      height: 450px;
+      border-radius: 5%;
+      font-size: 15px;
+      font-weight: bold;
+      background-color: #EDEDED;
+      cursor: pointer;
+      transition: 0.5s;
+      display: inline-block;
+      border-radius: 10px;
+      border: 4px double #cccccc;
+      color: #eeeeee;
+      text-align: center;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 15px;
+      justify-content: center;
+      align-items: center;
+      
+}
+#button1:hover {
+    background-color: #109749;
+}
+
+/* Form */
+.inputField{
+      pointer-events: none;
+      width: 75%;
+      height: 50px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      font-size: 20px;
+}
+.form-control{
+      width: 75%;
+      height: 50px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      font-size: 20px;
+}
+
+.form-control1{
+  width: 75%;
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.classbutton{
+  height: auto;
+  
+}
+
+.classbutton:hover{
+    color: rgb(92, 193, 252);
+    font-weight: bold;
+    
+
+}
+
+.activebutton{
+  font-weight:bold ;
+  color: rgb(92, 193, 252);
+  text-shadow: black;
+  
+}
+
+.kioskbutton{
+    display: flex;
+}
+
+.mainright{
+                
+    width: 50%;
+    text-align: center;
+    transition: all 0.5s ease;
+    justify-content: center;
+}
+
+.mainleft{
+    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.5s ease;
+    width: 50%;
+    
+}
+.button1{
+    background-color: #140d7c;
+    width: 100000;
+}
+
+/* Responsive Media Query */
+@media (max-width: 1240px) {
+  .sidebar{
+    width: 60px;
+  }
+  .sidebar.active{
+    width: 220px;
+  }
+  .home-section{
+    width: calc(100% - 60px);
+    left: 60px;
+  }
+  .sidebar.active ~ .home-section{
+    /* width: calc(100% - 220px); */
+    overflow: hidden;
+    left: 220px;
+  }
+  .home-section nav{
+    width: calc(100% - 60px);
+    left: 60px;
+  }
+  .sidebar.active ~ .home-section nav{
+    width: calc(100% - 220px);
+    left: 220px;
+  }
+}
+@media (max-width: 1150px) {
+  .home-content .sales-boxes{
+    flex-direction: column;
+  }
+  .home-content .sales-boxes .box{
+    width: 100%;
+    overflow-x: scroll;
+    margin-bottom: 30px;
+  }
+  .home-content .sales-boxes .top-sales{
+    margin: 0;
+  }
+}
+@media (max-width: 1000px) {
+  .overview-boxes .box{
+    width: calc(100% / 2 - 15px);
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 700px) {
+  nav .sidebar-button .dashboard,
+  nav .profile-details .admin_name,
+  nav .profile-details i{
+    display: none;
+  }
+  .home-section nav .profile-details{
+    height: 50px;
+    min-width: 40px;
+  }
+  .home-content .sales-boxes .sales-details{
+    width: 560px;
+  }
+}
+@media (max-width: 550px) {
+  .overview-boxes .box{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .sidebar.active ~ .home-section nav .profile-details{
+    display: none;
+  }
+}
+  @media (max-width: 400px) {
+  .sidebar{
+    width: 0;
+  }
+  .sidebar.active{
+    width: 60px;
+  }
+  .home-section{
+    width: 100%;
+    left: 0;
+  }
+  .sidebar.active ~ .home-section{
+    left: 60px;
+    width: calc(100% - 60px);
+  }
+  .home-section nav{
+    width: 100%;
+    left: 0;
+  }
+  .sidebar.active ~ .home-section nav{
+    left: 60px;
+    width: calc(100% - 60px);
+  }
+
+
+  #image1{
+    width: 10px;
+    height: 10px;
+  }
+  
+}
+
+
+
+
+    </style>
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details" style="background-color: #ffff;">
+      <img src="{% static 'Media/logo.png' %}" id="image1" style="height: 50px; width:50px; margin: 10px;" >
+      <span class="logo_name">B/P TO POINTS</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="{% url 'Kiosk_Homescreen' %}" class="active">
+            <i style="font-size: 50px;" class='bx bxs-home'></i>
+            <!-- <span style="font-size: 20px;" class="links_name">Admin Homescreen</span> -->
+          </a>
+        </li>
+        <br><br><br><br>
+        <li>
+          <a href="{% url 'Kiosk_about' %}">
+            <i style="font-size:50px" class='bx bx-question-mark'></i>
+            <!-- <span style="font-size: 50px;" class="links_name">Settings</span> -->
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="{% url 'kiosklogoutuser' %}">
+            <i class='bx bx-log-out' style="font-size: 50px;"></i>
+            <!-- <span class="links_name" style="font-size: 20px;">Log out</span> -->
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav style=" margin-left: 50px;">
+      <div class="sidebar-button">
+        <img src="{% static 'Media/Machine.png' %}" id="image1" style="height: 50px; width:50px; margin: 10px;" >
+        <span class="dashboard">KIOSK MACHINE</span>
+      </div>
+      
+      <div class="profile-details">
+        <!--<img src="images/profile.jpg" alt="">-->
+        <span class="admin_name">{{user}}</span>
+        <i class='bx bx-user-circle'></i>
+      </div>
+    </nav>
+
+    <div class="home-content" >
+        <div class="overview-boxes"style="position: center; margin-top: 50px;">
+            <div class="box" style="position: center;">
+              <div class="right-side">
+                <div class="indicator">
+                  <i class='bx bx-up-arrow-alt'></i>
+                  <span class="text">Keep Earning Points</span>
+                </div>
+                <div class="box-topic" style="font-weight: bold; font-size: 30px;">Earned Points</div>
+                {% for i in points %}
+                <div class="number">{{i.points}}</div>
+                {% endfor %}
+                <i class='bx bxs-wallet-alt' style="font-size: 50px; float: left; margin-right:10px ;"></i>
+                
+              </div>
+              
+            </div>
+        </div>
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          
+            <div class="title">Start Transaction</div>
+            <br>  
+            <div class="sales-details">
+                </ul>
+                    <div style="display: flex;">
+                        <div >
+                            <a href="{% url 'Kiosk_papernote' %}"><button  class="btn btn-primary col-sm-12"  type="submit" class="btn btn-primary col-sm-1" id="button1"><img src="{% static 'Media/Paper1.png' %}" style="width:250px"></button></a>
+                        </div> 
+                        <div>
+                            <form method="POST">
+                            {% csrf_token %}
+                            <a href="{% url 'Kiosk_bottlenote' %}"><button  class="btn btn-primary col-sm-12"  type="submit" class="btn btn-primary col-sm-1" id="button1" name="button1"><img src="{% static 'Media/Bottle1.png' %}" style="width:320px"></button></a>
+                            </form>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+          <br><br>
+        </div>
+        <div class="top-sales box">
+            <div class="recent-sales box" style="width:100%; height: 100%;">
+                <div class="title">Exchange Rate</div>
+                <br>
+                <div class="sales-details">
+                  <ul class="details">
+                    <li class="topic" style="margin-left:40px;">Paper</li>
+                    <li><div style="text-align: center">
+                      <img src="{% static 'Media/paper.png' %}" style="width:140px">
+                      <div style="color: black; font-size:20px;" class="grid-item">{{paper_weight}} kg</div>
+                  </div></li>
+                  <br>
+                    <li class="topic" style="margin-left:40px;">Bottle</li>
+                    <li><div style="text-align: center">
+                      <img src="{% static 'Media/bottles.png' %}" style="width:140px">
+                      <div style="color: black; font-size:20px;" class="grid-item">{{bottle_count}} pcs</div>
+                  </div></li>
+                  </ul>
+                  <ul class="details">
+                  
+                  <br>
+                  <li><div class="grid-item">
+                    <div style="text-align: center">
+                        <img src="{% static 'Media/Equal.png' %}" style="width:110px; height: auto;">
+                    </div>
+                </div></li>
+                <br><br><br><br>
+                  <li><div class="grid-item">
+                    <div style="text-align: center">
+                        <img src="{% static 'Media/Equal.png' %}" style="width:110px">
+                    </div>
+                </div></li>
+                </ul>
+                <ul class="details">
+                  <li class="topic" style="text-align: left;">Equivalent Points</li>
+                  <br><br>
+                  <li><div style="color: black; font-size: 25px; margin-bottom: 10px; font-weight: bold; margin-left: 50px;" class="grid-item">{{paper_points}} pts</div></li>
+                  <br><br><br><br>
+                  <li><div style="color: black; font-size: 26px; text-align: center; margin-top: 120px; margin-bottom: 50px; font-weight: bold; margin-left: 50px;" class="grid-item">{{bottle_points}}pts</div></li>
+                </ul>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+ 
+
+</body>
+{% endblock %}
+</html>
+
